@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เรื่องเล็ก ๆ ที่อยากบอกเธอ 💗</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Kanit:wght@300;400;500;600&display=swap');
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html,body{
+    width:100%;
+    min-height:100%;
+    font-family:'Kanit',sans-serif;
+    overflow-x:hidden;
+}
+
+body{
+    background:#21151b;
+    color:#fff;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.bg{
+    position:fixed;
+    inset:0;
+    z-index:-5;
+    background:
+        radial-gradient(circle at 20% 20%,rgba(255,145,170,.25),transparent 25%),
+        radial-gradient(circle at 80% 30%,rgba(255,190,120,.18),transparent 25%),
+        radial-gradient(circle at 50% 90%,rgba(255,90,130,.18),transparent 30%),
+        linear-gradient(135deg,#25151d,#3b1c28,#21151b);
+}
+
+.glow{
+    position:fixed;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    background:rgba(255,130,160,.12);
+    filter:blur(70px);
+    animation:moveGlow 9s infinite alternate ease-in-out;
+    z-index:-4;
+}
+
+.glow.one{
+    top:-100px;
+    left:-80px;
+}
+
+.glow.two{
+    right:-100px;
+    bottom:-100px;
+    animation-delay:2s;
+}
+
+@keyframes moveGlow{
+    from{transform:translate(0,0) scale(1);}
+    to{transform:translate(80px,40px) scale(1.25);}
+}
+
+/* =========================
+   PAGES
+========================= */
+
+.page{
+    display:none;
+    min-height:100vh;
+    width:100%;
+    padding:28px 18px 100px;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+
+.page.active{
+    display:flex;
+    animation:pageIn .7s ease;
+}
+
+@keyframes pageIn{
+    from{
+        opacity:0;
+        transform:translateY(25px) scale(.98);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+.container{
+    width:min(700px,100%);
+    text-align:center;
+    position: relative;
+    z-index: 5;
+}
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+
+.logo{
+    font-size:13px;
+    letter-spacing:4px;
+    opacity:.7;
+    margin-bottom:18px;
+}
+
+h1{
+    font-family:'Itim',cursive;
+    font-size:clamp(42px,11vw,80px);
+    line-height:1.05;
+    text-shadow:0 8px 30px rgba(0,0,0,.3);
+}
+
+h2{
+    font-family:'Itim',cursive;
+    font-size:clamp(32px,8vw,55px);
+    margin-bottom:14px;
+}
+
+p{
+    line-height:1.8;
+    color:#f8dfe6;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.btn{
+    border:0;
+    padding:14px 25px;
+    border-radius:999px;
+    background:linear-gradient(135deg,#ff7f9d,#ffae8b);
+    color:#351721;
+    font-family:'Kanit',sans-serif;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:0 10px 30px rgba(255,90,130,.25);
+    transition:.25s;
+    position: relative;
+    z-index: 20;
+}
+
+.btn:hover{
+    transform:translateY(-3px) scale(1.03);
+}
+
+.btn:active{
+    transform:scale(.96);
+}
+
+.btn.secondary{
+    background:rgba(255,255,255,.1);
+    color:#fff;
+    border:1px solid rgba(255,255,255,.15);
+}
+
+/* =========================
+   PAGE 1
+========================= */
+
+.hero{
+    position:relative;
+}
+
+.small-heart{
+    font-size:40px;
+    animation:heartbeat 1.4s infinite;
+    margin-bottom:10px;
+}
+
+@keyframes heartbeat{
+    0%,100%{transform:scale(1);}
+    15%{transform:scale(1.18);}
+    30%{transform:scale(1);}
+    45%{transform:scale(1.12);}
+}
+
+.hero h1{
+    background:linear-gradient(90deg,#fff,#ffd1db,#ff9eb3,#fff);
+    background-size:300%;
+    -webkit-background-clip:text;
+    color:transparent;
+    animation:shine 4s infinite linear;
+}
+
+@keyframes shine{
+    to{background-position:300%;}
+}
+
+.hero-sub{
+    margin:20px auto 30px;
+    max-width:500px;
+}
+
+.scroll-hint{
+    margin-top:35px;
+    font-size:13px;
+    opacity:.55;
+}
+
+#storyText{
+    min-height:150px;
+    transition:opacity .3s ease;
+}
+
+.typing-cursor{
+    display:inline-block;
+    width:3px;
+    height:28px;
+    background:#ff9eb3;
+    margin-left:4px;
+    vertical-align:middle;
+    animation:blinkCursor .7s infinite;
+}
+
+@keyframes blinkCursor{
+    0%,50%{opacity:1;}
+    51%,100%{opacity:0;}
+}
+
+/* =========================
+   FLOATING OBJECTS
+========================= */
+
+.float{
+    position:fixed;
+    pointer-events:none;
+    animation:floatUp linear forwards;
+    z-index:10;
+}
+
+@keyframes floatUp{
+    from{
+        transform:translateY(0) rotate(0);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* =========================
+   GAME 1
+========================= */
+
+.game-card{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:30px;
+    padding:25px;
+    backdrop-filter:blur(15px);
+    box-shadow:0 20px 60px rgba(0,0,0,.2);
+    position: relative;
+    z-index: 15;
+}
+
+.score{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:20px;
+    background:rgba(0,0,0,.15);
+    padding:12px 17px;
+    border-radius:18px;
+}
+
+#heartGame{
+    height:360px;
+    border-radius:25px;
+    background:
+        radial-gradient(circle at center,rgba(255,160,180,.12),transparent 50%),
+        rgba(0,0,0,.12);
+    position:relative;
+    overflow:hidden;
+}
+
+.game-heart{
+    position:absolute;
+    font-size:40px;
+    cursor:pointer;
+    user-select:none;
+    animation:pop .2s;
+    filter:drop-shadow(0 5px 10px rgba(255,80,130,.3));
+}
+
+@keyframes pop{
+    from{transform:scale(0);}
+    to{transform:scale(1);}
+}
+
+.timer{
+    margin-top:15px;
+    font-size:14px;
+    opacity:.7;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.card{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:28px;
+    padding:28px 22px;
+    backdrop-filter:blur(14px);
+    box-shadow:0 20px 60px rgba(0,0,0,.2);
+    position: relative;
+    z-index: 15;
+}
+
+.story{
+    min-height:260px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.story-text{
+    font-family:'Itim',cursive;
+    font-size:27px;
+    line-height:1.6;
+}
+
+.dots{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    margin:20px;
+}
+
+.dot{
+    width:8px;
+    height:8px;
+    background:rgba(255,255,255,.25);
+    border-radius:50%;
+}
+
+.dot.active{
+    background:#ff9daf;
+    box-shadow:0 0 12px #ff8da5;
+}
+
+/* =========================
+   QUIZ
+========================= */
+
+.question{
+    font-family:'Itim',cursive;
+    font-size:29px;
+    margin-bottom:25px;
+}
+
+.answers{
+    display:grid;
+    gap:12px;
+}
+
+.answer{
+    padding:15px;
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.07);
+    color:white;
+    font-family:'Kanit';
+    font-size:15px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.answer:hover{
+    background:rgba(255,140,165,.18);
+    transform:translateY(-2px);
+}
+
+.answer.correct{
+    background:rgba(105,220,150,.2);
+    border-color:#8ee4ae;
+}
+
+.answer.wrong{
+    background:rgba(255,100,120,.2);
+    border-color:#ff8d9d;
+}
+
+.quiz-result{
+    margin-top:18px;
+    min-height:28px;
+}
+
+/* =========================
+   MEMORY
+========================= */
+
+.memory-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:13px;
+    margin-top:25px;
+}
+
+.memory{
+    min-height:180px;
+    border-radius:22px;
+    overflow:hidden;
+    position:relative;
+    background:linear-gradient(135deg,#63313f,#9b5969);
+    display:flex;
+    align-items:flex-end;
+    padding:18px;
+    text-align:left;
+    transition:.3s;
+}
+
+.memory:hover{
+    transform:translateY(-5px) rotate(-1deg);
+}
+
+.memory:nth-child(2){
+    background:linear-gradient(135deg,#594131,#a57b52);
+}
+
+.memory:nth-child(3){
+    background:linear-gradient(135deg,#3f405d,#777aab);
+}
+
+.memory:nth-child(4){
+    background:linear-gradient(135deg,#513d53,#9a7098);
+}
+
+.memory span{
+    position:relative;
+    z-index:2;
+}
+
+.memory::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(transparent,rgba(0,0,0,.65));
+}
+
+/* =========================
+   LETTER
+========================= */
+
+.envelope{
+    font-size:100px;
+    cursor:pointer;
+    animation:envelopeFloat 2s infinite ease-in-out;
+}
+
+@keyframes envelopeFloat{
+    50%{transform:translateY(-10px) rotate(2deg);}
+}
+
+.letter{
+    display:none;
+    margin-top:20px;
+    background:#fff4e7;
+    color:#50343b;
+    border-radius:20px;
+    padding:28px 23px;
+    text-align:left;
+    box-shadow:0 20px 60px rgba(0,0,0,.3);
+    animation:letterOpen .7s ease;
+}
+
+.letter.show{
+    display:block;
+}
+
+.letter p{
+    color:#50343b;
+}
+
+@keyframes letterOpen{
+    from{
+        opacity:0;
+        transform:translateY(20px) scale(.95);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+/* =========================
+   MESSAGE
+========================= */
+
+textarea{
+    width:100%;
+    min-height:160px;
+    resize:none;
+    border:0;
+    outline:none;
+    border-radius:20px;
+    padding:18px;
+    font-family:'Kanit';
+    font-size:15px;
+    background:rgba(255,255,255,.1);
+    color:#fff;
+    margin:20px 0 12px;
+}
+
+textarea::placeholder{
+    color:rgba(255,255,255,.5);
+}
+
+textarea:focus{
+    box-shadow:0 0 0 2px rgba(255,150,170,.4);
+}
+
+.saved{
+    display:none;
+    margin-top:20px;
+    padding:18px;
+    border-radius:18px;
+    background:rgba(255,150,170,.12);
+}
+
+/* =========================
+   FINAL
+========================= */
+
+.final-heart{
+    font-size:90px;
+    animation:heartbeat 1.3s infinite;
+}
+
+.final-question{
+    font-family:'Itim';
+    font-size:clamp(36px,9vw,65px);
+    margin:15px 0;
+}
+
+.final-buttons{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-top:25px;
+    flex-wrap:wrap;
+}
+
+#noBtn{
+    position:relative;
+}
+
+/* =========================
+   NAV
+========================= */
+
+.nav{
+    position:fixed;
+    bottom:15px;
+    left:50%;
+    transform:translateX(-50%);
+    width:calc(100% - 30px);
+    max-width:600px;
+    padding:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(25,12,18,.78);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:999px;
+    z-index:100;
+}
+
+.nav button{
+    border:0;
+    background:none;
+    color:#fff;
+    opacity:.7;
+    cursor:pointer;
+    font-family:'Kanit';
+    padding:8px 14px;
+}
+
+.nav button:hover{
+    opacity:1;
+}
+
+.progress{
+    position:absolute;
+    top:0;
+    left:0;
+    height:2px;
+    background:#ff9eb2;
+    border-radius:10px;
+    transition:.5s;
+}
+
+/* =========================
+   CONFETTI
+========================= */
+
+.confetti{
+    position:fixed;
+    top:-20px;
+    z-index:100;
+    animation:confettiFall 3s linear forwards;
+}
+
+@keyframes confettiFall{
+    to{
+        transform:translateY(110vh) rotate(720deg);
+        opacity:0;
+    }
+}
+
+/* =========================
+   AUDIO PLAYER
+========================= */
+
+#musicControl {
+    position: fixed;
+    bottom: 80px;
+    right: 15px;
+    z-index: 100;
+    background: rgba(25,12,18,.8);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 999px;
+    padding: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+#musicControl:hover {
+    transform: scale(1.05);
+}
+
+#musicControl button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    opacity: 0.8;
+}
+
+#musicControl button:hover {
+    opacity: 1;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:500px){
+
+    .page{
+        padding:25px 14px 110px;
+    }
+
+    .game-card,.card{
+        padding:22px 17px;
+    }
+
+    #heartGame{
+        height:330px;
+    }
+
+    .memory{
+        min-height:150px;
+    }
+
+    .nav button{
+        padding:7px 9px;
+        font-size:13px;
+    }
+
+    #musicControl {
+        bottom: 75px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="glow one"></div>
+<div class="glow two"></div>
+
+<!-- ======================================
+     PAGE 1
+====================================== -->
+
+<section class="page active" id="page1">
+    <div class="container hero">
+
+        <div class="small-heart">💗</div>
+
+        <div class="logo">A LITTLE SURPRISE FOR YOU</div>
+
+        <h1>
+            มีอะไร<br>
+            อยากให้เธอรู้
+        </h1>
+
+        <p class="hero-sub">
+            ก่อนจะอ่านต่อ ขอให้เธอรู้ไว้ก่อนว่า...
+            เว็บนี้ตั้งใจทำขึ้นมาเพื่อเธอโดยเฉพาะ
+        </p>
+
+        <button class="btn" onclick="nextPage()">
+            พร้อมหรือยัง? ✨
+        </button>
+
+        <div class="scroll-hint">
+            เปิดต่อไปทีละหน้า แล้วค่อย ๆ รู้ไปพร้อมกันนะ
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ======================================
+     PAGE 2 GAME
+====================================== -->
+
+<section class="page" id="page2">
+    <div class="container">
+
+        <div class="logo">MISSION 01</div>
+
+        <h2>เกมเล็ก ๆ ก่อนเริ่ม 🎮</h2>
+
+        <p style="margin-bottom:20px">
+            ช่วยเก็บหัวใจให้ได้มากที่สุดภายใน 15 วินาที
+        </p>
+
+        <div class="game-card">
+
+            <div class="score">
+                <span>💗 คะแนน: <b id="score">0</b></span>
+                <span>⏱️ <b id="time">15</b>s</span>
+            </div>
+
+            <div id="heartGame"></div>
+
+            <div class="timer">
+                แตะหัวใจที่โผล่ขึ้นมาเลย!
+            </div>
+
+            <button class="btn" id="startGame" onclick="startGame()" style="margin-top:18px">
+                เริ่มเกม 💕
+            </button>
+
+        </div>
+
+        <div id="gameResult" style="margin-top:20px"></div>
+
+        <button
+            class="btn"
+            id="gameNextBtn"
+            onclick="nextPage()"
+            style="display:none;margin-top:22px;">
+            ไปต่อกันเลย 💗 →
+        </button>
+
+    </div>
+</section>
+
+
+<!-- ======================================
+     PAGE 3 STORY
+====================================== -->
+
+<section class="page" id="page3">
+    <div class="container">
+
+        <div class="logo">MISSION 02</div>
+
+        <h2>จริง ๆ แล้ว...</h2>
+
+        <div class="card story">
+            <div class="story-text" id="storyText">มีบางอย่างอยากบอกกับเธอ</div>
+        </div>
+
+        <div class="dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+
+        <button class="btn" onclick="nextStory()">
+            อ่านต่อ →
+        </button>
+
+    </div>
+</section>
+
+
+<!-- ======================================
+     PAGE 4 QUIZ
+====================================== -->
+
+<section class="page" id="page4">
+    <div class="container">
+
+        <div class="logo">MISSION 03</div>
+
+        <h2>ลองทายใจดู 💭</h2>
+
+        <div class="card">
+
+            <div class="question" id="question">
+                คำถามกำลังโหลด...
+            </div>
+
+            <div class="answers" id="answers"></div>
+
+            <div class="quiz-result" id="quizResult"></div>
+
+        </div>
+
+        <button
+            class="btn"
+            id="nextQuestion"
+            onclick="nextQuestion()"
+            style="display:none;margin-top:18px">
+            คำถามต่อไป →
+        </button>
+
+    </div>
+</section>
+
+
+<!-- ======================================
+     PAGE 5 MEMORY
+====================================== -->
+
+<section class="page" id="page5">
+    <div class="container">
+
+        <div class="logo">SOME LITTLE THINGS</div>
+
+        <h2>เรื่องธรรมดา ๆ ที่พิเศษ</h2>
+
+        <p>
+            บางครั้งความรู้สึกดี ๆ ไม่ได้เกิดจากเรื่องใหญ่เลย
+            แค่มีเธออยู่ในบางช่วงเวลา มันก็พิเศษแล้ว
+        </p>
+
+        <div class="memory-grid">
+
+            <div class="memory">
+                <span>🌷<br>รอยยิ้มของเธอ<br>ที่ทำให้วันธรรมดาดีขึ้น</span>
+            </div>
+
+            <div class="memory">
+                <span>☀️<br>บทสนทนาเล็ก ๆ<br>ที่เราจำได้</span>
+            </div>
+
+            <div class="memory">
+                <span>🌙<br>วันที่ได้คุยกัน<br>จนไม่รู้ว่าเวลาผ่านไปตอนไหน</span>
+            </div>
+
+            <div class="memory">
+                <span>💫<br>และอีกหลาย ๆ เรื่อง<br>ที่เราอยากเก็บไว้</span>
+            </div>
+
+        </div>
+
+        <button class="btn" onclick="nextPage()" style="margin-top:25px">
+            มีอีกอย่างจะบอก 💌
+        </button>
+
+    </div>
+</section>
+
+
+<!-- ======================================
+     PAGE 6 LETTER
+====================================== -->
+
+<section class="page" id="page6">
+    <div class="container">
+
+        <div class="logo">OPEN THIS LETTER</div>
+
+        <h2>จดหมายฉบับหนึ่ง 💌</h2>
+
+        <p>
+            แตะซองจดหมายเพื่อเปิด
+        </p>
+
+        <div class="envelope" onclick="openLetter()">
+            💌
+        </div>
+
+        <div class="letter" id="letter">
+
+            <p>
+                ถึงเธอ
+                <br><br>
+
+                เราไม่รู้เหมือนกันว่าควรเริ่มต้นยังไงดี
+                เพราะสิ่งที่อยากพูดมันมีเยอะกว่าที่คิด
+                <br><br>
+
+                เราชอบเวลาที่ได้คุยกับเธอ
+                ชอบเวลาที่เห็นเธอยิ้ม
+                และชอบความรู้สึกธรรมดา ๆ
+                ที่เกิดขึ้นทุกครั้งเวลามีเธออยู่ตรงนั้น
+                <br><br>
+
+                เราไม่ได้อยากสัญญาว่าจะทำทุกอย่างให้สมบูรณ์แบบ
+                แต่อยากเป็นคนหนึ่งที่อยู่ข้าง ๆ
+                และทำให้เธอยิ้มได้ในวันที่ธรรมดา
+                <br><br>
+
+                ที่สำคัญที่สุด...
+                มีคำถามหนึ่งที่เราอยากถามเธอ
+                <br><br>
+
+                อ่านต่อไปนะ 🤍
+            </p>
+
+        </div>
+
+        <button
+            class="btn"
+            onclick="nextPage()"
+            style="margin-top:25px">
+            ไปต่อ 💗
+        </button>
+
+    </div>
+</section>
+
+
+<!-- ======================================
+     PAGE 7 MESSAGE
+====================================== -->
+
+<section class="page" id="page7">
+    <div class="container">
+
+        <div class="logo">YOUR TURN</div>
+
+        <h2>ก่อนถึงคำถามนั้น...</h2>
+
+        <div class="card">
+
+            <p>
+                เราอยากรู้เหมือนกันว่า
+                ตอนนี้เธอรู้สึกยังไง
+                <br>
+                ไม่ต้องคิดคำตอบให้สวยก็ได้
+                แค่เขียนสิ่งที่อยู่ในใจจริง ๆ ก็พอ
+            </p>
+
+            <form
+                action="https://formspree.io/f/myegzqgj"
+                method="POST"
+                id="loveForm">
+
+                <textarea
+                    name="message"
+                    id="message"
+                    placeholder="พิมพ์สิ่งที่อยากบอกเราไว้ตรงนี้... 💭"
+                    required></textarea>
+
+                <input
+                    type="hidden"
+                    name="_subject"
+                    value="💌 มีคนส่งความในใจมาให้">
+
+                <button
+                    type="submit"
+                    class="btn">
+                    ส่งความในใจ 💌
+                </button>
+
+            </form>
+
+            <div class="saved" id="saved">
+                ขอบคุณที่บอกความรู้สึกให้เรารู้นะ 🥺💗
+                <br>
+                เราจะเก็บคำพูดนี้ไว้อย่างดีเลย
+            </div>
+
+        </div>
+
+        <button
+            class="btn"
+            onclick="nextPage()"
+            style="margin-top:25px">
+            พร้อมแล้ว... →
+        </button>
+
+    </div>
+</section>
+
+<!-- ======================================
+     PAGE 8 FINAL
+====================================== -->
+
+<section class="page" id="page8">
+    <div class="container">
+
+        <div class="final-heart">💗</div>
+
+        <div class="logo">THE LAST QUESTION</div>
+
+        <h2>มาถึงตรงนี้แล้ว...</h2>
+
+        <p>
+            มีคำถามหนึ่งที่เราอยากถามเธอมานานแล้ว
+        </p>
+
+        <div class="final-question">
+            เป็นแฟนกับเรา<br>ได้ไหม? 🥺
+        </div>
+
+        <p>
+            ไม่ต้องตอบให้เราดีใจก็ได้<br>
+            ขอแค่ตอบตามความรู้สึกของเธอจริง ๆ
+        </p>
+
+        <div class="final-buttons">
+
+            <button class="btn" onclick="yesAnswer()">
+                ได้สิ 💗
+            </button>
+
+            <button class="btn secondary" id="noBtn" onclick="noAnswer()">
+                ขอคิดดูก่อน 🙈
+            </button>
+
+        </div>
+
+        <div id="finalResult" style="margin-top:30px"></div>
+
+    </div>
+</section>
+
+
+<!-- ======================================
+     MUSIC PLAYER
+====================================== -->
+
+<div id="musicControl">
+    <button onclick="toggleMusic()" id="musicBtn">⏸️</button>
+    <button onclick="toggleMute()" id="muteBtn">🔊</button>
+</div>
+
+<audio id="backgroundMusic" autoplay loop>
+    <source src="song.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+
+<!-- ======================================
+     NAVIGATION
+====================================== -->
+
+<div class="nav">
+
+    <div class="progress" id="progress"></div>
+
+    <button onclick="prevPage()">← กลับ</button>
+
+    <span id="pageNumber">1 / 8</span>
+
+    <button onclick="nextPage()">ต่อ →</button>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   PAGE SYSTEM
+===================================================== */
+
+let currentPage = 1;
+const totalPages = 8;
+
+function showPage(num){
+
+    if(num < 1) num = 1;
+    if(num > totalPages) num = totalPages;
+
+    document.querySelectorAll('.page').forEach(page=>{
+        page.classList.remove('active');
+    });
+
+    document.getElementById('page'+num).classList.add('active');
+
+    currentPage = num;
+
+    document.getElementById('pageNumber').textContent =
+        num + ' / ' + totalPages;
+
+    document.getElementById('progress').style.width =
+        ((num-1)/(totalPages-1))*100 + '%';
+
+    window.scrollTo({
+        top:0,
+        behavior:'smooth'
+    });
+
+    createParticles();
+
+    if(num === 4){
+        loadQuestion();
+    }
+}
+
+function nextPage(){
+    showPage(currentPage + 1);
+}
+
+function prevPage(){
+    showPage(currentPage - 1);
+}
+
+
+/* =====================================================
+   FLOATING PARTICLES
+===================================================== */
+
+function createParticles(){
+
+    const symbols = ['💗','💕','✨','♡','✦'];
+
+    for(let i=0;i<4;i++){
+
+        const el = document.createElement('div');
+
+        el.className='float';
+
+        el.textContent =
+            symbols[Math.floor(Math.random()*symbols.length)];
+
+        el.style.left =
+            Math.random()*100 + 'vw';
+
+        el.style.bottom =
+            '-30px';
+
+        el.style.fontSize =
+            (14 + Math.random()*20) + 'px';
+
+        el.style.animationDuration =
+            (5 + Math.random()*5) + 's';
+
+        document.body.appendChild(el);
+
+        setTimeout(()=>{
+            el.remove();
+        },10000);
+    }
+}
+
+
+/* =====================================================
+   GAME
+===================================================== */
+
+let score = 0;
+let gameTime = 15;
+let gameRunning = false;
+let gameTimer;
+
+function startGame(){
+
+    if(gameRunning) return;
+
+    score = 0;
+    gameTime = 15;
+    gameRunning = true;
+
+    document.getElementById('score').textContent = score;
+    document.getElementById('time').textContent = gameTime;
+
+    document.getElementById('gameResult').innerHTML = '';
+
+    document.getElementById('gameNextBtn').style.display='none';
+
+    spawnHeart();
+
+    gameTimer = setInterval(()=>{
+
+        gameTime--;
+
+        document.getElementById('time').textContent = gameTime;
+
+        if(gameTime <= 0){
+
+            clearInterval(gameTimer);
+
+            gameRunning = false;
+
+            document.getElementById('heartGame').innerHTML='';
+
+            document.getElementById('startGame').style.display='inline-block';
+
+            document.getElementById('gameResult').innerHTML =
+                `หมดเวลาแล้ว! ได้ <b>${score}</b> คะแนน 💗`;
+
+            document.getElementById('gameNextBtn').style.display =
+                'inline-block';
+
+        }
+
+    },1000);
+}
+
+function spawnHeart(){
+
+    if(!gameRunning) return;
+
+    const area = document.getElementById('heartGame');
+
+    const heart = document.createElement('div');
+
+    heart.className='game-heart';
+
+    heart.textContent =
+        Math.random() > .2 ? '💗' : '💖';
+
+    heart.style.left =
+        Math.random()*85 + '%';
+
+    heart.style.top =
+        Math.random()*80 + '%';
+
+    heart.onclick = ()=>{
+
+        score++;
+
+        document.getElementById('score').textContent = score;
+
+        heart.remove();
+
+        spawnHeart();
+    };
+
+    area.appendChild(heart);
+
+    setTimeout(()=>{
+
+        if(heart.parentNode){
+            heart.remove();
+        }
+
+        if(gameRunning){
+            spawnHeart();
+        }
+
+    },850);
+}
+
+
+/* =====================================================
+   STORY
+===================================================== */
+
+const stories = [
+    "มีบางอย่างที่เราอยากบอกเธอ",
+    "ช่วงเวลาที่ได้รู้จักเธอ มันทำให้วันธรรมดา ๆ มีความหมายขึ้นเยอะเลย",
+    "บางทีเราอาจไม่ได้พูดออกมาตรง ๆ แต่จริง ๆ แล้วเราดีใจทุกครั้งที่ได้คุยกับเธอ",
+    "และวันนี้... เราเลยอยากลองพูดความรู้สึกนั้นออกมาสักครั้ง 💗"
+];
+
+let storyIndex = 0;
+let typingTimer;
+
+function typeStory(text){
+
+    clearInterval(typingTimer);
+
+    const element = document.getElementById('storyText');
+
+    element.innerHTML = "";
+    element.style.opacity = "1";
+
+    let index = 0;
+
+    const cursor = document.createElement("span");
+    cursor.className = "typing-cursor";
+
+    typingTimer = setInterval(()=>{
+
+        if(index < text.length){
+
+            element.textContent = text.substring(0,index + 1);
+            element.appendChild(cursor);
+
+            index++;
+
+        }else{
+
+            clearInterval(typingTimer);
+
+        }
+
+    },45);
+}
+
+
+function nextStory(){
+
+    storyIndex++;
+
+    if(storyIndex >= stories.length){
+
+        showPage(4);
+        return;
+    }
+
+    const element = document.getElementById('storyText');
+
+    element.style.opacity = "0";
+
+    setTimeout(()=>{
+
+        typeStory(stories[storyIndex]);
+
+    },300);
+
+    document.querySelectorAll('.dot').forEach((dot,i)=>{
+        dot.classList.toggle(
+            'active',
+            i === storyIndex
+        );
+    });
+}
+typeStory(stories[0]);
+
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+const questions = [
+
+    {
+        q:"ถ้าวันหนึ่งเราเงียบไป เธอจะทำยังไง? 🤔",
+        a:[
+            "ทักมาถามว่าเป็นอะไร",
+            "ปล่อยไปก่อน",
+            "ส่งมีมมาให้",
+            "ทำเป็นไม่รู้ไม่เห็น"
+        ],
+        correct:0
+    },
+
+    {
+        q:"ถ้ามีคนหนึ่งชอบเธอมาก ๆ เธออยากให้เขาทำอะไร? 🌷",
+        a:[
+            "อยู่ข้าง ๆ กัน",
+            "หายไปเลย",
+            "ไม่ต้องพูดอะไร",
+            "บล็อกไปเลย"
+        ],
+        correct:0
+    },
+
+    {
+        q:"ถ้าเราอยากบอกอะไรสำคัญกับเธอ... เธอจะฟังไหม? 👀",
+        a:[
+            "ฟังสิ",
+            "ไม่ฟัง",
+            "แล้วแต่วัน",
+            "ขอไปนอนก่อน"
+        ],
+        correct:0
+    }
+
+];
+
+let questionIndex = 0;
+
+function loadQuestion(){
+
+    if(questionIndex >= questions.length){
+
+        document.getElementById('question').textContent =
+            "เก่งมาก! ผ่านภารกิจแล้ว 🎉";
+
+        document.getElementById('answers').innerHTML =
+            "<p>จริง ๆ แล้วคำตอบที่เราอยากได้ที่สุด... เราเก็บไว้หน้าสุดท้ายแล้ว 💗</p>";
+
+        document.getElementById('nextQuestion').style.display='none';
+
+        return;
+    }
+
+    const item = questions[questionIndex];
+
+    document.getElementById('question').textContent =
+        item.q;
+
+    const answers =
+        document.getElementById('answers');
+
+    answers.innerHTML='';
+
+    document.getElementById('quizResult').textContent='';
+
+    document.getElementById('nextQuestion').style.display='none';
+
+    item.a.forEach((answer,index)=>{
+
+        const button =
+            document.createElement('button');
+
+        button.className='answer';
+
+        button.textContent=answer;
+
+        button.onclick=()=>{
+
+            document.querySelectorAll('.answer')
+                .forEach(b=>b.disabled=true);
+
+            if(index === item.correct){
+
+                button.classList.add('correct');
+
+                document.getElementById('quizResult').innerHTML =
+                    "ถูกต้อง! 💗 ดูเหมือนเธอจะรู้ใจเรานะ";
+
+            }else{
+
+                button.classList.add('wrong');
+
+                document.getElementById('quizResult').innerHTML =
+                    "ไม่เป็นไร 😆 คำตอบที่เราแอบหวังคือข้อแรกนะ";
+
+            }
+
+            document.getElementById('nextQuestion')
+                .style.display='inline-block';
+        };
+
+        answers.appendChild(button);
+
+    });
+}
+
+function nextQuestion(){
+
+    questionIndex++;
+
+    loadQuestion();
+}
+
+
+/* =====================================================
+   LETTER
+===================================================== */
+
+function openLetter(){
+
+    document.getElementById('letter')
+        .classList.add('show');
+
+    createParticles();
+}
+
+
+/* =====================================================
+   FINAL YES
+===================================================== */
+
+function yesAnswer(){
+
+    document.getElementById('finalResult').innerHTML = `
+        <div style="
+            background:rgba(255,130,160,.13);
+            border:1px solid rgba(255,150,170,.25);
+            padding:25px;
+            border-radius:25px;
+        ">
+            <div style="font-size:55px">🥳😝🥳</div>
+
+            <h2 style="font-size:38px;margin:8px 0">
+                เย้!
+            </h2>
+
+            <p>
+                ขอบคุณที่ให้โอกาสเราได้เดินไปด้วยกันนะ
+                <br>
+                ต่อจากนี้ฝากตัวด้วยนะ 💕
+            </p>
+        </div>
+    `;
+
+    celebrate();
+}
+
+
+/* =====================================================
+   NO BUTTON
+===================================================== */
+
+let noCount = 0;
+
+function noAnswer(){
+
+    noCount++;
+
+    const btn =
+        document.getElementById('noBtn');
+
+    const messages = [
+        "ขอคิดดูก่อนก็ได้ 🙈",
+        "แน่ใจนะ? 🥺",
+        "ลองคิดอีกทีได้ไหม",
+        "เรารอคำตอบอยู่นะ 💗"
+    ];
+
+    btn.textContent =
+        messages[Math.min(noCount-1,messages.length-1)];
+
+    btn.style.transform =
+        `translate(${(Math.random()*80)-40}px,
+                   ${(Math.random()*50)-25}px)`;
+
+    if(noCount >= 4){
+
+        document.getElementById('finalResult').innerHTML =
+            `<p style="margin-top:20px">
+                ไม่ต้องรีบตอบก็ได้นะ 😊
+                <br>
+                เราอยากให้เธอตอบจากความรู้สึกจริง ๆ
+            </p>`;
+    }
+}
+
+
+/* =====================================================
+   CONFETTI
+===================================================== */
+
+function celebrate(){
+
+    const symbols =
+        ['💗','💖','💕','✨','🌷','⭐','💐'];
+
+    for(let i=0;i<70;i++){
+
+        const el =
+            document.createElement('div');
+
+        el.className='confetti';
+
+        el.textContent =
+            symbols[Math.floor(Math.random()*symbols.length)];
+
+        el.style.left =
+            Math.random()*100 + 'vw';
+
+        el.style.fontSize =
+            (12 + Math.random()*20) + 'px';
+
+        el.style.animationDuration =
+            (2 + Math.random()*3) + 's';
+
+        el.style.animationDelay =
+            Math.random() + 's';
+
+        document.body.appendChild(el);
+
+        setTimeout(()=>{
+            el.remove();
+        },6000);
+    }
+}
+
+/* =====================================================
+   MUSIC PLAYER SYSTEM (AUTO PLAY)
+===================================================== */
+
+const music = document.getElementById('backgroundMusic');
+const musicBtn = document.getElementById('musicBtn');
+const muteBtn = document.getElementById('muteBtn');
+let isMuted = false;
+
+// ฟังก์ชันสั่งเล่นเพลงทันที
+function playMusic() {
+    music.play().then(() => {
+        musicBtn.textContent = '⏸️';
+    }).catch(() => {
+        // หากเบราว์เซอร์บล็อกการเล่นเพลงอัตโนมัติ จะเล่นทันทีที่ผู้ใช้แตะหรือคลิกส่วนไหนก็ได้ในหน้าเว็บครั้งแรก
+        const startPlay = () => {
+            music.play();
+            musicBtn.textContent = '⏸️';
+            document.removeEventListener('click', startPlay);
+            document.removeEventListener('touchstart', startPlay);
+        };
+        document.addEventListener('click', startPlay);
+        document.addEventListener('touchstart', startPlay);
+    });
+}
+
+function toggleMusic(){
+    if (music.paused) {
+        music.play();
+        musicBtn.textContent = '⏸️';
+    } else {
+        music.pause();
+        musicBtn.textContent = '▶️';
+    }
+}
+
+function toggleMute(){
+    if (isMuted) {
+        music.muted = false;
+        muteBtn.textContent = '🔊';
+        isMuted = false;
+    } else {
+        music.muted = true;
+        muteBtn.textContent = '🔇';
+        isMuted = true;
+    }
+}
+
+// เรียกใช้ให้เพลงเล่นอัตโนมัติ
+playMusic();
+
+/* =====================================================
+   INITIAL
+===================================================== */
+
+createParticles();
+
+</script>
+
+</body>
+</html>
